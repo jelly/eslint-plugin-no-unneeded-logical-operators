@@ -1,4 +1,4 @@
-# eslint-plugin-no-unneeded-logical-operators
+# eslint-plugin-no-unneeded-logical-operators [![Build Status](https://travis-ci.org/jelly/eslint-plugin-no-unneeded-logical-operators.svg?branch=master)](https://travis-ci.org/jelly/eslint-plugin-no-unneeded-logical-operators)
 
 Detect no-unneeded-logical-operators
 
