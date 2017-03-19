@@ -22,7 +22,7 @@ ruleTester.run("no-unneeded-logical-operators", rule, {
 
     valid: [
         "var foo, bar; if (foo || bar ) {}",
-	"var foo, bar; foo || bar;"
+         "var foo, bar; foo || bar;"
         // give me some code that won't trigger a warning
     ],
 
