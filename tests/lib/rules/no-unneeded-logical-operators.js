@@ -8,16 +8,15 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-var rule = require("../../../lib/rules/no-unneeded-logical-operators"),
-
-    RuleTester = require("eslint").RuleTester;
+const RuleTester = require("eslint").RuleTester,
+ rule = require("../../../lib/rules/no-unneeded-logical-operators");
 
 
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 ruleTester.run("no-unneeded-logical-operators", rule, {
 
     valid: [
