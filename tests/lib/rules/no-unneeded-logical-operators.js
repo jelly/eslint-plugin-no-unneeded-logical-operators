@@ -19,12 +19,12 @@ const ruleTester = new RuleTester();
 ruleTester.run("no-unneeded-logical-operators", rule, {
 
     valid: [
-        "var foo, bar; if (foo || bar ) {}",
-         "var foo, bar; foo || bar;",
-         "var foo = 1; foo || 1;",
-         "var foo, bar; foo && bar;",
-         "var foo = 1; foo && 1;",
-         "var x = {x: 1}; x.y || x.y"
+        "var y, x; if (y || x ) {}",
+         "var y, x; y || x;",
+         "var y = 1; y || 1;",
+         "var y, x; y && x;",
+         "var y = 1; y && 1;",
+         "var x = {y: 1}; x.y || x.y"
     ],
 
     invalid: [
@@ -43,21 +43,21 @@ ruleTester.run("no-unneeded-logical-operators", rule, {
             }]
         },
         {
-            code: "'bar' || 'bar'",
+            code: "'x' || 'x'",
             errors: [{
                 message: "Unneeded logical operator",
                 type: "LogicalExpression"
             }]
         },
         {
-            code: "var bar = 1; bar || bar",
+            code: "var x = 1; x || x",
             errors: [{
                 message: "Unneeded logical operator",
                 type: "LogicalExpression"
             }]
         },
         {
-            code: "var bar = 1; bar && bar",
+            code: "var x = 1; x || x",
             errors: [{
                 message: "Unneeded logical operator",
                 type: "LogicalExpression"
