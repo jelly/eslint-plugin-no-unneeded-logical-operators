@@ -23,7 +23,8 @@ ruleTester.run("no-unneeded-logical-operators", rule, {
          "var foo, bar; foo || bar;",
          "var foo = 1; foo || 1;",
          "var foo, bar; foo && bar;",
-         "var foo = 1; foo && 1;"
+         "var foo = 1; foo && 1;",
+         "var x = {x: 1}; x.y || x.y"
     ],
 
     invalid: [
@@ -43,6 +44,20 @@ ruleTester.run("no-unneeded-logical-operators", rule, {
         },
         {
             code: "'bar' || 'bar'",
+            errors: [{
+                message: "Unneeded logical operator",
+                type: "LogicalExpression"
+            }]
+        },
+        {
+            code: "var bar = 1; bar || bar",
+            errors: [{
+                message: "Unneeded logical operator",
+                type: "LogicalExpression"
+            }]
+        },
+        {
+            code: "var bar = 1; bar && bar",
             errors: [{
                 message: "Unneeded logical operator",
                 type: "LogicalExpression"
