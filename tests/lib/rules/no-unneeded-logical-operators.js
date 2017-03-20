@@ -41,6 +41,13 @@ ruleTester.run("no-unneeded-logical-operators", rule, {
                 message: "Unneeded logical operator",
                 type: "LogicalExpression"
             }]
-        }
+        },
+        {
+            code: "'bar' || 'bar'",
+            errors: [{
+                message: "Unneeded logical operator",
+                type: "LogicalExpression"
+            }]
+        },
     ]
 });
