@@ -16,11 +16,11 @@ Next, install `eslint-plugin-no-unneeded-logical-operators`:
 $ npm install eslint-plugin-no-unneeded-logical-operators --save-dev
 ```
 
-**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-plugin-666` globally.
+**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-plugin-no-unneeded-logical-operators` globally.
 
 ## Usage
 
-Add `666` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Add `eslint-plugin-no-unneeded-logical-operators` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
 
 ```json
 {
