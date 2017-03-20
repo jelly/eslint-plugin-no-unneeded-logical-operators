@@ -21,16 +21,25 @@ ruleTester.run("no-unneeded-logical-operators", rule, {
 
     valid: [
         "var foo, bar; if (foo || bar ) {}",
-         "var foo, bar; foo || bar;"
-        // give me some code that won't trigger a warning
+         "var foo, bar; foo || bar;",
+         "var foo = 1; foo || 1;",
+         "var foo, bar; foo && bar;",
+         "var foo = 1; foo && 1;"
     ],
 
     invalid: [
         {
-            code: "var foo; if (foo || foo) { }",
+            code: "1 || 1",
             errors: [{
                 message: "Unneeded logical operator",
-                type: "IfStatement"
+                type: "LogicalExpression"
+            }]
+        },
+        {
+            code: "1 && 1",
+            errors: [{
+                message: "Unneeded logical operator",
+                type: "LogicalExpression"
             }]
         }
     ]
