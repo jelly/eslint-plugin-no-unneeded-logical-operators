@@ -11,7 +11,6 @@
 const RuleTester = require("eslint").RuleTester,
  rule = require("../../../lib/rules/no-unneeded-logical-operators");
 
-
 //------------------------------------------------------------------------------
 // Tests
 //------------------------------------------------------------------------------
