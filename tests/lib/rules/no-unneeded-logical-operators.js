@@ -86,7 +86,7 @@ ruleTester.run("no-unneeded-logical-operators", rule, {
         },
         {
             code: "let a = 1 || 1;",
-            parserOptions: { ecmaVersion: 6 },
+            parserOptions: {ecmaVersion: 6},
             output: "let a = 1;",
             errors: [{
                 message: "Unneeded logical operator",
