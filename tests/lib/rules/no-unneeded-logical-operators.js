@@ -30,6 +30,7 @@ ruleTester.run("no-unneeded-logical-operators", rule, {
     invalid: [
         {
             code: "1 || 1",
+            output: "",
             errors: [{
                 message: "Unneeded logical operator",
                 type: "LogicalExpression"
@@ -37,6 +38,7 @@ ruleTester.run("no-unneeded-logical-operators", rule, {
         },
         {
             code: "1 && 1",
+            output: "",
             errors: [{
                 message: "Unneeded logical operator",
                 type: "LogicalExpression"
@@ -44,24 +46,68 @@ ruleTester.run("no-unneeded-logical-operators", rule, {
         },
         {
             code: "'x' || 'x'",
+            output: "",
             errors: [{
                 message: "Unneeded logical operator",
                 type: "LogicalExpression"
             }]
         },
         {
-            code: "var x = 1; x || x",
+            code: "var x = 1;x || x",
+            output: "var x = 1;",
             errors: [{
                 message: "Unneeded logical operator",
                 type: "LogicalExpression"
             }]
         },
         {
-            code: "var x = 1; x || x",
+            code: "var x = 1;x || x",
+            output: "var x = 1;",
             errors: [{
                 message: "Unneeded logical operator",
                 type: "LogicalExpression"
             }]
         },
+        {
+            code: "var x = 1; var b = x || x",
+            output: "var x = 1; var b = x",
+            errors: [{
+                message: "Unneeded logical operator",
+                type: "LogicalExpression"
+            }]
+        },
+        {
+            code: "var b = 1 || 1",
+            output: "var b = 1",
+            errors: [{
+                message: "Unneeded logical operator",
+                type: "LogicalExpression"
+            }]
+        },
+        {
+            code: "let a = 1 || 1;",
+            parserOptions: { ecmaVersion: 6 },
+            output: "let a = 1;",
+            errors: [{
+                message: "Unneeded logical operator",
+                type: "LogicalExpression"
+            }]
+        },
+        {
+            code: "if (1 || 1) {}",
+            output: "if (1) {}",
+            errors: [{
+                message: "Unneeded logical operator",
+                type: "LogicalExpression"
+            }]
+        },
+        {
+            code: "var x = 1; if (x || x) {}",
+            output: "var x = 1; if (x) {}",
+            errors: [{
+                message: "Unneeded logical operator",
+                type: "LogicalExpression"
+            }]
+        }
     ]
 });
