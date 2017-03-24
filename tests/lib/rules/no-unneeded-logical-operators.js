@@ -24,7 +24,12 @@ ruleTester.run("no-unneeded-logical-operators", rule, {
          "var y = 1; y || 1;",
          "var y, x; y && x;",
          "var y = 1; y && 1;",
-         "var x = {y: 1}; x.y || x.y"
+         "var x = {y: 1}; x.y || x.y",
+         "isNaN(1) && isNaN(2)",
+         "isNaN(1) || isNaN(2)",
+         "var x = 1;isNaN(x) || isNaN(1)",
+         "var x = 1, y = 1;isNaN(x) || isNaN(y)",
+         "if(isNaN(1) || isNaN(2)) {}"
     ],
 
     invalid: [
@@ -104,6 +109,30 @@ ruleTester.run("no-unneeded-logical-operators", rule, {
         {
             code: "var x = 1; if (x || x) {}",
             output: "var x = 1; if (x) {}",
+            errors: [{
+                message: "Unneeded logical operator",
+                type: "LogicalExpression"
+            }]
+        },
+        {
+            code: "isNaN(1) || isNaN(1)",
+            output: "",
+            errors: [{
+                message: "Unneeded logical operator",
+                type: "LogicalExpression"
+            }]
+        },
+        {
+            code: "var x = 1;isNaN(x) || isNaN(x)",
+            output: "var x = 1;",
+            errors: [{
+                message: "Unneeded logical operator",
+                type: "LogicalExpression"
+            }]
+        },
+        {
+            code: "if (isNaN(1) && isNaN(1)) {}",
+            output: "if (isNaN(1)) {}",
             errors: [{
                 message: "Unneeded logical operator",
                 type: "LogicalExpression"
